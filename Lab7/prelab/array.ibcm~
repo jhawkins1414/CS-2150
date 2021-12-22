@@ -1,0 +1,86 @@
+C011 000  jmp		skip variables
+0050 001  dw     a[]    int a[]
+0000 002  dw     i      int index
+0000 003  dw     n      int array size
+0000 004
+0000 005  dw     x      input to array
+0000 006  
+3000 007  dw     loadIt 
+4000 008  dw	 storeIt
+0000 009
+0000 00A 
+0001 00B  dw    1       int one
+0000 00C  dw    0       int zero
+0000 00D 
+0000 00E  
+0000 00F 
+0000 010 
+1000 011 read		read size	start
+4003 012 store 		store size
+B000 013 		
+B000 014 
+3003 015 load		load n
+6002 016 subtract 	subtract i
+E025 017 jmpl		exit if i > size
+D025 018 jmpe		exit if i = size
+3008 019  load		load storeit
+5001 01A  add		add a[]
+5002 01B  add 		add i
+401E 01C  store		store storeit
+1000 01D  read
+0000 01E  dw		execute storeit
+3002 01F  load		load i
+500B 020  add		add 1
+4002 021  store		store i
+C015 022  jmp		jmp to start of loop
+B000 023
+B000 024
+300C 025 load		load 0
+4002 026 store		store in i
+B000 027 
+3003 028 load		load n
+6002 029 subtract	subtract i
+E038 02A jmpl		exit if i > size
+D038 02B jmpe		exit if i = size
+3007 02C load 		load loadit
+5001 02D add		add a[]
+5002 02E add		add i
+4030 02F store		store loadit
+0000 030 dw		execute loadit
+1800 031 print
+3002 032 load		load i
+500B 033 add		add 1
+4002 034 store  	store i
+C028 035 jmp		jmp to start of loop
+B000 036
+B000 037
+3003 038 load		load size
+4002 039 store		store size in i
+B000 03A
+4002 03B load		load i
+D049 03C jmpe		exit if i = 0
+B000 03D 
+3007 03E load		load loadit
+5001 03F add		add a[]
+5002 040 add		add i
+600B 041 subtract 	subtract 1
+4043 042 store		store loadit
+0000 043 dw		execute
+1800 044 print
+4002 045 load		load i
+600B 046 subtract	subtract 1
+4002 047 store 		store i
+C03B 048 jmp		jump to start of loop
+0000 049
+0000 04A
+0000 04B
+0000 04C
+0000 04D
+0000 04E
+0000 04F
+
+
+
+
+
+

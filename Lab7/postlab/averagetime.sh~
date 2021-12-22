@@ -1,0 +1,19 @@
+#!/bin/bash
+declare -i AVERAGE=0
+
+
+read dict
+
+read grid
+
+RUNNING_TIMEONE=`./a.out $dict $grid| tail -1`
+RUNNING_TIMETWO=`./a.out $dict $grid| tail -1`
+RUNNING_TIMETHREE=`./a.out $dict $grid| tail -1`
+RUNNING_TIMEFOUR=`./a.out $dict $grid| tail -1`
+RUNNING_TIMEFIVE=`./a.out $dict $grid| tail -1`
+
+
+
+AVERAGE=$(((RUNNING_TIMEONE+RUNNING_TIMETWO+RUNNING_TIMETHREE+RUNNING_TIMEFOUR+RUNNING_TIMEFIVE)/5))
+
+echo "Average run time is $AVERAGE milliseconds"

@@ -1,0 +1,19 @@
+C004 000 	jmp		jump over variables
+0010 001	dw		n    size
+0001 002	dw		one	size
+3000 003	loadIt 
+3001 004	load		load n
+6011 005	subtract	subtract iterator from n	
+E010 006	jmpl		halt if (n - iterator < 0)
+3003 007	load		load loadIt instruction
+5011 008	add		add iterator
+400A 009	store		store loadIt
+0000 00A	dw		execute loadIt
+1800 00B	print
+3011 00C	load		load iterator	
+5002 00D	add		add one to iterator
+4011 00E	store		store iterator
+C004 00F	jmp		jump to start of loop	
+0000 010	halt
+
+

@@ -1,0 +1,121 @@
+C012	000	jmp		jump to start
+006E	001	dw		a[]
+0000	002	dw		i
+0000	003	dw 		temp
+000a	004	dw 		n
+0009	005	dw		j
+0000	006	dw 		comp1	a[j]
+0000	007	dw 		comp2	a[j-1]
+0000	008	
+0000	009
+0009	00A	dw		nine
+0001	00B	dw		one
+0000	00C	dw		zero
+3000	00D	dw 		loadIt
+4000	00E 	dw		storeIt
+0000	00F
+0000	010
+0000	011
+3004	012	load		load n			start loop1
+6002	013	subtract  	subtract i  
+E023	014	jmpl		exit first loop if i > 10
+D023	015	jmpe		exit first loop if i == 10
+300E	016	load		load storeIt instruction
+5001	017	add		add a[]
+5002	018	add 		add i
+401B	019	store 		store storeIt
+1000	01A	read
+0000	01B	dw		execute storeIt
+3002	01C	load		load i
+500B	01D	add		add 1
+4002	01E	store		store i
+C012	01F	jmp		jump to start of loop1
+B000	020
+B000	021
+B000	022
+300C	023	load		load 0
+4002	024	store		store 0 into i
+B000	025
+3004	026     load		load n			start loop2
+6002	027	subtract	subtract i
+E05D	028	jmpl		exit second loop if i > 10
+D05D	029	jmpe		exit second loop if i == 10
+B000	02A	
+3005	02B	load		load j			start loop3
+6002	02C	subtract	subtract i
+E056	02D	jmpl		exit third loop if j < i
+D056	02E	jmpe		exit third loop if j == i
+B000	02F	
+300D	030	load		load loadIt instruction
+5001	031	add		add a[]
+5005	032	add		add j
+4034	033	store		store instruction
+0000	034	dw		execute loadIt
+4006	035	store		store in comp1
+B000	036
+300D	037	load		load loadIt instruction
+5001	038	add		add a[]
+5005	039	add		add j
+600B	03A	subtract	subtract 1
+403C	03B	store		store instruction
+0000	03C	dw		execute loadIt
+4007	03D	store		store in comp2
+B000	03E 
+3007	03F	load		load comp2
+6006	040	subtract	subtract comp1
+E053	041	jmpl		exit if statement if a[j] > a[j-1]
+D053	042	jmpe		exit if statement if a[j] = a[j-1]
+3006	043	load		load comp1	     	    start if statement
+4003	044	store		store comp1 in temp
+300E	045	load		load storeIt instruction
+5001	046	add		add a[]
+5005	047	add		add j
+404A	048	store		store storeIt instruction
+3007	049	load		comp2
+0000	04A	dw		execute storeIt
+300E	04B	load		load storeIt instruction
+5001	04C	add		add a[]
+5005	04D	add		add j
+600B	04E	subtract	subtract 1
+4051	04F	store		store storeIt instruction
+3003	050	load		load temp
+0000	051	dw		execute storeIt		end of if statement
+3005	052	load		load j
+600B	053	subtract	subtract 1
+4005	054	store		store 1
+C02B	055	jmp		jump to start of loop 3		end of loop 3
+300A	056	load		load 9
+4005	057	store 		store 9 in j
+3002 	058	load		load i
+500B	059	add		add 1
+4002	05A	store 		store i
+C026	05B	jmp		jump to start of loop2		end of loop 2
+B000	05C
+300C	05D	load		load 0
+4002	05E	store		store 0 into i
+3004	05F	load		load n			start of loop 4	
+6002	060	subtract 	subtract i
+E06D	061	jmpl		exit loop if i > 10
+D06D	062	jmpe		exit loop if i = 10
+300D	063	load 		load loadIt
+5001	064	add 		add a[]
+5002	065	add		add i
+4067	066	store		store loadIt
+0000	067	dw		execute loadIt
+1800	068	print
+3002	069	load		load i
+500B	06A	add 		add 1
+4002	06B	store		store i
+C05F	06C	jmp		jump to start of loop 4
+0000	06D
+0000	06E
+0000	06F
+0000	070
+0000	071
+0000	072
+0000	073
+0000 	074
+0000 	075
+0000 	076
+0000 	077
+B000 	078
